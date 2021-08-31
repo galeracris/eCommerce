@@ -19,9 +19,9 @@ export default function ContainerProductos() {
     <div className={classes.root}>
       <Grid container spacing={3}>
           {
-              ProductosJSON.map(Producto => (
+              ProductosJSON.map(item => (
                     <Grid item xs={12} sm={6} md={4} lg={3}>
-                      <Producto key={Producto.id} Producto={Producto}/>  
+                      <Producto key={item.id} Producto={item}/>  
                     </Grid>
               ))
           }

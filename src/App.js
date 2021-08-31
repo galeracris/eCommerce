@@ -1,5 +1,5 @@
 import './App.css';
-import Producto from '../src/components/Productos/Producto';
+// import Producto from '../src/components/Productos/Producto';
 import Navbar from './components/Navbar/Navbar';
 import ContainerProductos from '../src/components/ContainerProductos/ContainerProductos';
 

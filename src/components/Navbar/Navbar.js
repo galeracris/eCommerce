@@ -38,19 +38,19 @@ export default function Navbar() {
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <img src={logo} className={classes.image} />
+                <img src={logo} className={classes.image} alt="Cervecería 1930"/>
           </IconButton>
           <div className={classes.grow} />
-          <Typography variant="h6" color="white" component="p">
+          <Typography variant="h6" component="p">
             Hola invitado
           </Typography>
           <div className={classes.button}>
-          <Button variant="contained" color="green">
+          <Button variant="contained" color="primary">
               <strong>Login</strong>
           </Button>
           <IconButton aria-label="show cart items" color="inherit">
           <Badge badgeContent={2} color="secondary">
-          <ShoppingCart fontSize="large" color="green" />
+          <ShoppingCart fontSize="large" color="primary" />
 
           </Badge>
           
