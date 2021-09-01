@@ -9,6 +9,8 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import DeleteIcon from '@material-ui/icons/Delete';
 import accounting from "accounting";
+import { useStateValue } from "../StateProvider/StateProvider";
+import { actionTypes } from "../Reducer/reducer";
 
 const useStyles = makeStyles((theme) => ({
   root:{
@@ -33,11 +35,17 @@ const useStyles = makeStyles((theme) => ({
 
 function CheckoutCard({Producto: {id, nombre, precio, stock, rating, imagenProducto, descripcion, tipoProducto}}) {
   const classes = useStyles();
+  const [{carrito}, dispatch] = useStateValue();
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+
+  const removeItem = () => dispatch({
+    type: actionTypes.REMOVE_ITEM,
+    id: id,
+  })
 
   return (
     <Card className={classes.root}>
@@ -66,7 +74,7 @@ function CheckoutCard({Producto: {id, nombre, precio, stock, rating, imagenProdu
           ))}
         </div>
         <IconButton>
-            <DeleteIcon fontSize="large"/>
+            <DeleteIcon fontSize="large" onClick={removeItem}/>
         </IconButton>
       </CardActions>
     

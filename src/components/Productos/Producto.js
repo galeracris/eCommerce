@@ -11,7 +11,12 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { AddShoppingCart } from '@material-ui/icons';
+import RemoveShoppingCartOutlinedIcon from '@material-ui/icons/RemoveShoppingCartOutlined';
 import accounting from "accounting";
+import { useState } from 'react';
+import { actionTypes } from "../Reducer/reducer";
+import { useStateValue } from "../StateProvider/StateProvider";
+
 
 const useStyles = makeStyles((theme) => ({
   root:{
@@ -38,11 +43,33 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Producto({Producto: {id, nombre, precio, stock, rating, imagenProducto, descripcion, tipoProducto}}) {
   const classes = useStyles();
-  const [expanded, setExpanded] = React.useState(false);
+  const [{carrito}, dispatch] = useStateValue();
+  const [expanded, setExpanded] = useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+
+  const removeItem = () => dispatch({
+    type: actionTypes.REMOVE_ITEM,
+    id: id,
+  })
+
+  const addToCarrito = () => {
+    dispatch({
+      type: actionTypes.ADD_TO_CARRITO,
+      item:{
+        id,
+        nombre,
+        precio,
+        stock,
+        rating,
+        tipoProducto,
+        imagenProducto,
+        descripcion,
+      }
+    })
+  }
 
   return (
     <Card className={classes.root}>
@@ -70,8 +97,11 @@ export default function Producto({Producto: {id, nombre, precio, stock, rating, 
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label='Agregar al carrito'>
+        <IconButton aria-label='Agregar al carrito' onClick={addToCarrito}>
           <AddShoppingCart fontSize='large' />
+        </IconButton>
+        <IconButton aria-label='Eliminar del carrito' onClick={removeItem}>
+        <RemoveShoppingCartOutlinedIcon fontSize='large' />
         </IconButton>
         {Array(rating)
           .fill()

@@ -16,8 +16,8 @@ root:{
     border: 0,
     boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
     color:'white',
-    padding:"10px",
-    width:"20vh",
+    padding:"25px",
+    width:"65%",
     height:"20vh"
 },
 button:{
