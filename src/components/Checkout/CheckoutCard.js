@@ -1,6 +1,5 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -33,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function CheckoutCard({Producto: {id, nombre, precio, stock, rating, imagenProducto, descripcion, tipoProducto}}) {
+function CheckoutCard({Producto: {id, nombre, precio, stock, rating, imagenProducto}}) {
   const classes = useStyles();
   const [{carrito}, dispatch] = useStateValue();
   const [expanded, setExpanded] = React.useState(false);

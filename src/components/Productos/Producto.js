@@ -21,6 +21,9 @@ import { useStateValue } from "../StateProvider/StateProvider";
 const useStyles = makeStyles((theme) => ({
   root:{
     maxWidth: 345,
+    padding: "1rem",
+    margin: "1rem",
+    boxShadow: "0 0 1rem #00000025 inset",
   },
   action: {
     marginTop: "1rem",
@@ -55,7 +58,8 @@ export default function Producto({Producto: {id, nombre, precio, stock, rating, 
     id: id,
   })
 
-  const addToCarrito = () => {
+  const addToCarrito = (id) => {
+    console.log(addToCarrito)
     dispatch({
       type: actionTypes.ADD_TO_CARRITO,
       item:{
@@ -114,7 +118,7 @@ export default function Producto({Producto: {id, nombre, precio, stock, rating, 
           })}
           onClick={handleExpandClick}
           aria-expanded={expanded}
-          aria-label="show more"
+          aria-label="Ver más"
         >
           <ExpandMoreIcon />
         </IconButton>

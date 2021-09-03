@@ -1,12 +1,12 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
 import { Button, Typography } from '@material-ui/core';
-import CheckoutCard from './CheckoutCard';
-import Total from '../Total/Total';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import Grid from '@material-ui/core/Grid';
 import { Link } from 'react-router-dom';
 import { useStateValue } from "../StateProvider/StateProvider";
+import CheckoutCard from './CheckoutCard';
+import Total from '../Total/Total';
 
 
     const useStyles = makeStyles((theme) =>({
@@ -28,6 +28,7 @@ import { useStateValue } from "../StateProvider/StateProvider";
         const [{carrito}, dispatch] = useStateValue();
 
 
+
         function FormRow () {
             return(
                 <React.Fragment>
@@ -47,7 +48,7 @@ import { useStateValue } from "../StateProvider/StateProvider";
 
                 <Grid item xs={12}>
                     <Typography align='center' gutterBottom variant='h4'>
-                        Shopping
+                        Carrito de compra
                     </Typography>
                 </Grid>
 

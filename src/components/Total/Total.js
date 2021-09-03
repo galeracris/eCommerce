@@ -2,7 +2,8 @@ import React from 'react';
 import accounting from "accounting";
 import { makeStyles } from '@material-ui/core';
 import { Button } from '@material-ui/core';
-
+import { totalCarrito } from '../Reducer/reducer';
+import { useStateValue } from "../StateProvider/StateProvider";
 
 const useStyles = makeStyles ((theme) => ({
 root:{
@@ -28,11 +29,13 @@ button:{
 
 const Total = () => {
     const classes = useStyles()
+    const [{carrito}, dispatch] = useStateValue();
+
     return(
         <div className={classes.root}>
-                <h5>Total items: 3</h5>
-                <h5>{accounting.formatMoney(50)}</h5>
-                <Button className={classes.button} variant="contained" color="secondary">Check Out</Button>
+                <h5>Total items: {carrito?.length}</h5>
+                <h5>{accounting.formatMoney(totalCarrito(carrito))}</h5>
+                <Button className={classes.button} variant="contained" color="secondary">Finalizar compra</Button>
         </div>
     )
 }

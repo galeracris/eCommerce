@@ -1,10 +1,11 @@
 import './App.css';
-// import Producto from '../src/components/Productos/Producto';
 import Navbar from './components/Navbar/Navbar';
 import ContainerProductos from '../src/components/ContainerProductos/ContainerProductos';
 import CheckoutPage from '../src/components/Checkout/CheckoutPage';
-// import CheckoutCard from './components/Checkout/CheckoutCard';
 import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
+import { getFirestore, collection, getDocs } from 'firebase/firestore';
+
+// import Loading from './components/Loading/Loading';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Navbar/>
       <Switch>
         <Route path="/checkout-page">
+          {/* <Loading /> */}
           <CheckoutPage/>
         </Route>
         <Route path="/">
