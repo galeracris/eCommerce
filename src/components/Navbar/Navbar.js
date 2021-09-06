@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Navbar() {
   const classes = useStyles();
-  const [{ carrito }, dispatch] = useStateValue();
+  const [{ basket }, dispatch] = useStateValue();
 
   return (
     <div className={classes.root}>
@@ -60,12 +60,14 @@ export default function Navbar() {
               Hola invitado
             </Typography>
             <div className={classes.button}>
-              <Button variant="contained" color="primary">
-                <strong>Login</strong>
+              <Link to="/signin">
+              <Button variant="contained" color="error">
+                <strong>Sign In</strong>
               </Button>
-              <Link to="checkout-page">
+              </Link>
+              <Link to="/checkout-page">
                 <IconButton aria-label="show cart items" color="inherit">
-                  <Badge badgeContent={carrito?.length} color="secondary">
+                  <Badge badgeContent={basket?.length} color="secondary">
                     <ShoppingCart fontSize="large" color="primary" />
                   </Badge>
                 </IconButton>

@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Producto({Producto: {id, nombre, precio, stock, rating, imagenProducto, descripcion, tipoProducto}}) {
   const classes = useStyles();
-  const [{carrito}, dispatch] = useStateValue();
+  const [{basket}, dispatch] = useStateValue();
   const [expanded, setExpanded] = useState(false);
 
   const handleExpandClick = () => {
@@ -58,10 +58,9 @@ export default function Producto({Producto: {id, nombre, precio, stock, rating, 
     id: id,
   })
 
-  const addToCarrito = (id) => {
-    console.log(addToCarrito)
-    dispatch({
-      type: actionTypes.ADD_TO_CARRITO,
+  const addToBasket = (id) => {
+  dispatch({
+      type: actionTypes.ADD_TO_BASKET,
       item:{
         id,
         nombre,
@@ -96,17 +95,22 @@ export default function Producto({Producto: {id, nombre, precio, stock, rating, 
         title={nombre}
       />
       <CardContent>
+
         <Typography variant="body2" color="textSecondary" component="p">
           {tipoProducto}
         </Typography>
       </CardContent>
+
       <CardActions disableSpacing>
-        <IconButton aria-label='Agregar al carrito' onClick={addToCarrito}>
+        
+        <IconButton aria-label='Agregar al carrito' onClick={addToBasket}>
           <AddShoppingCart fontSize='large' />
         </IconButton>
+
         <IconButton aria-label='Eliminar del carrito' onClick={removeItem}>
         <RemoveShoppingCartOutlinedIcon fontSize='large' />
         </IconButton>
+
         {Array(rating)
           .fill()
           .map((_, i) => (

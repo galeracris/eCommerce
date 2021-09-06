@@ -4,6 +4,8 @@ import ContainerProductos from '../src/components/ContainerProductos/ContainerPr
 import CheckoutPage from '../src/components/Checkout/CheckoutPage';
 import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
+import SignIn from './components/SIgnIn/SignIn';
+import SignUp from './components/Signup/SignUp';
 
 // import Loading from './components/Loading/Loading';
 
@@ -13,13 +15,20 @@ function App() {
     <div className="App">
       <Navbar/>
       <Switch>
-        <Route path="/checkout-page">
+        <Route exact path="/signin">
+          <SignIn />
+        </Route>
+        <Route exact path="/signup">
+          <SignUp />
+        </Route>
+        <Route exact path="/checkout-page">
           {/* <Loading /> */}
           <CheckoutPage/>
         </Route>
-        <Route path="/">
+        <Route exact path="/">
           <ContainerProductos />
         </Route>
+
       </Switch>
     </div>
     </Router>

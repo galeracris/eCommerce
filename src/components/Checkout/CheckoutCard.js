@@ -34,15 +34,15 @@ const useStyles = makeStyles((theme) => ({
 
 function CheckoutCard({Producto: {id, nombre, precio, stock, rating, imagenProducto}}) {
   const classes = useStyles();
-  const [{carrito}, dispatch] = useStateValue();
+  const [{basket}, dispatch] = useStateValue();
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
-  const removeItem = () => dispatch({
-    type: actionTypes.REMOVE_ITEM,
+  const removeAllItem = () => dispatch({
+    type: actionTypes.REMOVE_ALL_ITEM,
     id: id,
   })
 
@@ -73,7 +73,7 @@ function CheckoutCard({Producto: {id, nombre, precio, stock, rating, imagenProdu
           ))}
         </div>
         <IconButton>
-            <DeleteIcon fontSize="large" onClick={removeItem}/>
+            <DeleteIcon fontSize="large" onClick={removeAllItem} /> 
         </IconButton>
       </CardActions>
     
