@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -12,6 +13,8 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import {Link as RouteLink} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 function Copyright() {
   return (
@@ -48,6 +51,19 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignUp() {
   const classes = useStyles();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const history = useHistory();
+
+  // const signup = (e) => {
+  //   e.preventDefault();
+  //   auth.createUserWithEmailAndPassword(email, password).then((auth)=>{
+  //     console.log(auth);
+  //     if (auth){
+  //       history.push("/");
+  //     }
+  //   }).catch(err=>alert(err.message))
+  // }
 
   return (
     <Container component="main" maxWidth="xs">
@@ -86,6 +102,8 @@ export default function SignUp() {
             </Grid>
             <Grid item xs={12}>
               <TextField
+                value={email}
+                onCahnge={e=>setEmail(e.target.value)}
                 variant="outlined"
                 required
                 fullWidth
@@ -100,6 +118,8 @@ export default function SignUp() {
                 variant="outlined"
                 required
                 fullWidth
+                value={password}
+                onCahnge={e=>setPassword(e.target.value)}
                 name="password"
                 label="Password"
                 type="password"
@@ -120,14 +140,15 @@ export default function SignUp() {
             variant="contained"
             color="primary"
             className={classes.submit}
+            // onClick={signup}
           >
             Sign Up
           </Button>
           <Grid container justifyContent="flex-end">
             <Grid item>
-              <Link href="#" variant="body2">
+            <RouteLink to="/signin">
                 Already have an account? Sign in
-              </Link>
+             </RouteLink>
             </Grid>
           </Grid>
         </form>
