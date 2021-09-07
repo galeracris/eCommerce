@@ -35,7 +35,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         basket: state.basket
-          .map((item) => (item.id === action.id ? { ...item, cantidad: item.cantidad - 1 } : item)) // si el id es igual al que se esta agregando, se le suma uno a la cantidad
+          .map((item) => (item.id === action.id ? { ...item, cantidad: item.cantidad - 1 } : item)) // si el id es igual al que se esta agregando, se le resta uno a la cantidad
           .filter((item) => item.cantidad > 0),
       };
 
@@ -46,7 +46,7 @@ const reducer = (state = initialState, action) => {
       };
 
     case actionTypes.CLEAR_BASKET:
-      return { ...state, carrito: [] };
+      return { ...state, basket: [] };
 
     default:
       return state;
