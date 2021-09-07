@@ -4,7 +4,6 @@ import Grid from '@material-ui/core/Grid';
 import Producto from '../Productos/Producto';
 import { ProductosJSON } from '../ProductosDatos';
 
-
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -18,13 +17,11 @@ export default function ContainerProductos() {
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
-          {
-              ProductosJSON.map(item => (
-                    <Grid item xs={12} sm={6} md={4} lg={3}>
-                      <Producto key={item.id} Producto={item}/>  
-                    </Grid>
-              ))
-          }
+        {ProductosJSON.map((item) => (
+          <Grid item xs={12} sm={6} md={4} lg={3}>
+            <Producto key={item.id} data={item} />
+          </Grid>
+        ))}
       </Grid>
     </div>
   );
