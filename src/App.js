@@ -21,7 +21,6 @@ function App() {
           <SignUp />
         </Route>
         <Route exact path="/checkout-page">
-          {/* <Loading /> */}
           <CheckoutPage/>
         </Route>
         <Route exact path="/">

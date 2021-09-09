@@ -19,4 +19,5 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
+// getData devuelve la conexion con firestore a mi app
 export const getData = () => getFirestore(app);
