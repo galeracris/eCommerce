@@ -1,15 +1,22 @@
-import React from 'react';
+import React, {Suspense} from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { StateProvider } from './components/StateProvider/StateProvider';
 import reducer, { initialState } from './components/Reducer/reducer';
+import { FirebaseAppProvider }from 'reactfire';
+import getData from '../src/components/Firebase/index';
+
 
 ReactDOM.render(
   <React.StrictMode>
     <StateProvider initialState={initialState} reducer={reducer}>
+    <FirebaseAppProvider firebaseConfig={getData}>
+      <Suspense fallback={'Cargando Cerveceria 1930... Bienvenid@ !!!'}>
     <App />
+    </Suspense>
+    </FirebaseAppProvider>
     </StateProvider>
   </React.StrictMode>,
   document.getElementById('root')

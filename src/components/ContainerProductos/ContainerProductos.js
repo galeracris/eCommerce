@@ -15,18 +15,17 @@ const useStyles = makeStyles((theme) => ({
 
 const ContainerProductos = () => {
   const classes = useStyles();
-  // 1 creo un estado para mostrar la lista
+  // 1 estado para mostrar la lista
   const [latas, setLatas] = useState([]);
 
   useEffect(() => {
- // useEffect no puede asincronico
 
-    // 2 PIDO LOS DATOS (truco: usar async/await)
+    // 2 PIDO LOS DATOS (async/await)
     const getLatas = async () => {
       // 3 obtener colleccion
         const latasCollection = collection(getData(), 'latas');
 
-        // 4 obtener Snapshot (foto de la lista en ese momento)
+        // 4 obtener Snapshot de la lista
         const latasSnapshot = await getDocs(latasCollection);
 
         // 5 obtener datos en forma de json con data()
@@ -36,7 +35,7 @@ const ContainerProductos = () => {
         console.log(latasList);
         setLatas(latasList);
     };
-    // segunda parte del truco ejecutar la funcion asincronica
+    // ejecutar la funcion asincronica
     getLatas();
   }, []);
 
