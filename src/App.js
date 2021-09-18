@@ -5,34 +5,31 @@ import CheckoutPage from '../src/components/Checkout/CheckoutPage';
 import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
 import SignIn from './components/SIgnIn/SignIn';
 import SignUp from './components/Signup/SignUp';
-import { useFirebaseApp } from 'reactfire';
 
 
 // import Loading from './components/Loading/Loading';
 
 function App() {
-  const firebase = useFirebaseApp();
-  
+
   return (
     <Router>
-    <div className="App">
-      <Navbar/>
-      <Switch>
-        <Route exact path="/signin">
-          <SignIn />
-        </Route>
-        <Route exact path="/signup">
-          <SignUp />
-        </Route>
-        <Route exact path="/checkout-page">
-          <CheckoutPage/>
-        </Route>
-        <Route exact path="/">
-          <ContainerProductos />
-        </Route>
-
-      </Switch>
-    </div>
+      <div className="App">
+        <Navbar/>
+          <Switch>
+            <Route exact path="/signin">
+              <SignIn />
+            </Route>
+            <Route exact path="/signup">
+              <SignUp />
+            </Route>
+            <Route exact path="/checkout-page">
+              <CheckoutPage/>
+            </Route>
+            <Route exact path="/">
+              <ContainerProductos />
+            </Route>
+          </Switch>
+      </div>
     </Router>
   );
 }

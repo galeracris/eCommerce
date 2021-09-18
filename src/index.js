@@ -12,15 +12,14 @@ import getData from '../src/components/Firebase/index';
 ReactDOM.render(
   <React.StrictMode>
     <StateProvider initialState={initialState} reducer={reducer}>
-    <FirebaseAppProvider firebaseConfig={getData}>
-      <Suspense fallback={'Cargando Cerveceria 1930... Bienvenid@ !!!'}>
-    <App />
-    </Suspense>
-    </FirebaseAppProvider>
+      <FirebaseAppProvider firebaseConfig={getData}>   
+          <App />
+      </FirebaseAppProvider>
     </StateProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
