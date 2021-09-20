@@ -20,6 +20,4 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 // getData devuelve la conexion con firestore a mi app
-const getData = () => getFirestore(app);
-
-export default getData;
+export const getData = () => getFirestore(app);

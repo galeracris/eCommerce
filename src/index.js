@@ -1,20 +1,16 @@
-import React, {Suspense} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { StateProvider } from './components/StateProvider/StateProvider';
 import reducer, { initialState } from './components/Reducer/reducer';
-import { FirebaseAppProvider }from 'reactfire';
-import getData from '../src/components/Firebase/index';
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <StateProvider initialState={initialState} reducer={reducer}>
-      <FirebaseAppProvider firebaseConfig={getData}>   
+    <StateProvider initialState={initialState} reducer={reducer}>  
           <App />
-      </FirebaseAppProvider>
     </StateProvider>
   </React.StrictMode>,
   document.getElementById('root')

@@ -46,17 +46,16 @@ const ContainerProductos = () => {
 return (
     <div className={classes.root}>
     <Grid container spacing={3} />
-    {/* {latas.map(latasItem => ( */}
-      //  <Grid item xs={12} sm={6} md={4} lg={3}>
-      //  <Producto key={latasItem.id} data={latasItem} />
+    {/* { {latas.map(latasItem => ( }
+       { {  <Grid item xs={12} sm={6} md={4} lg={3}>
+       <Producto key={latasItem.id} data={latasItem} /> } } */}
 
       <Grid item xs={12} sm={6} md={4} lg={3}>
         <getLatas />
       </Grid>
   ))
-        </Grid>
       </div>
     );
-}
+      }
 
 export default ContainerProductos;
