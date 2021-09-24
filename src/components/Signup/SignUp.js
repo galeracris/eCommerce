@@ -8,13 +8,14 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import {Link as RouteLink} from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
+// import { Auth } from '../Firebase/auth';
+// import { createUserWithEmailAndPassword } from "firebase/auth";
 
 function Copyright() {
   return (
@@ -55,9 +56,9 @@ export default function SignUp() {
   const [password, setPassword] = useState("");
   const history = useHistory();
 
-  // const signup = (e) => {
+  // const signupfire = (e) => {
   //   e.preventDefault();
-  //   auth.createUserWithEmailAndPassword(email, password).then((auth)=>{
+  //   Auth.createUserWithEmailAndPassword(email, password).then((auth)=>{
   //     console.log(auth);
   //     if (auth){
   //       history.push("/");
@@ -140,7 +141,7 @@ export default function SignUp() {
             variant="contained"
             color="primary"
             className={classes.submit}
-            // onClick={signup}
+            // onClick={signupfire}
           >
             Registrate
           </Button>

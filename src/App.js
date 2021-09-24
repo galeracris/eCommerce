@@ -5,11 +5,26 @@ import CheckoutPage from '../src/components/Checkout/CheckoutPage';
 import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
 import SignIn from './components/SIgnIn/SignIn';
 import SignUp from './components/Signup/SignUp';
-
-
-// import Loading from './components/Loading/Loading';
+// import { useEffect } from 'react';
+// import { Auth } from './components/Firebase/auth';
+// import { actionTypes } from './components/Reducer/reducer';
+import { useStateValue } from './components/StateProvider/StateProvider';
 
 function App() {
+
+    const [{user}, dispatch] = useStateValue();
+    
+  // useEffect(()=>{
+  //   Auth.onAuthStateChanged((authUser)=>{
+  //     console.log(authUser);
+  //     if (authUser){
+  //       dispatch({
+  //         type: actionTypes.SET_USER,
+  //         user: authUser,
+  //       })
+  //     }
+  //   })
+  // }, [])
 
   return (
     <Router>

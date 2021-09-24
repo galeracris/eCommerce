@@ -1,5 +1,6 @@
 export const initialState = {
   basket: [],
+  user: null,
 };
 
 export const actionTypes = {
@@ -7,6 +8,8 @@ export const actionTypes = {
   REMOVE_ITEM: 'REMOVE_ITEM',
   REMOVE_ALL_ITEM: 'REMOVE_ALL_ITEM',
   CLEAR_BASKET: 'CLEAR_BASKET',
+  SET_USER: "SET_USER",
+  EMPTY_BASKET: "EMPTY_BASKET"
 };
 
 export const totalItemsInBasket = (basket) => basket.reduce((amount, item) => amount + item.cantidad, 0);
@@ -47,6 +50,18 @@ const reducer = (state = initialState, action) => {
 
     case actionTypes.CLEAR_BASKET:
       return { ...state, basket: [] };
+
+      // case "SET_USER":
+      //  return {
+      //     ...state,
+      //     user: action.user
+      //   };
+
+      //   case "EMPTY_BASKET":
+      //     return{
+      //       ...state,
+      //       basket: action.basket
+      //     };
 
     default:
       return state;

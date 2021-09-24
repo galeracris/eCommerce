@@ -1,4 +1,4 @@
-import React from 'react';
+import {useState} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -7,12 +7,13 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import {Link as RouteLink, UseHistory} from 'react-router-dom';
+import {Link as RouteLink, useHistory} from 'react-router-dom';
+// import { Auth } from '../Firebase/auth';
+
 
 function Copyright() {
   return (
@@ -49,6 +50,14 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignIn() {
   const classes = useStyles();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const history = useHistory();
+
+  // const signinfire = (e) => {
+  //   e.preventDefault();
+  //   Auth.signInWithEmailAndPassword(email, password).then((Auth)=>history.push("/")).catch(err=>alert(err.message))
+  // } 
 
   return (
     <Container component="main" maxWidth="xs">
@@ -62,6 +71,8 @@ export default function SignIn() {
         </Typography>
         <form className={classes.form} noValidate>
           <TextField
+          value={email}
+          onChange={e=>setEmail(e.target.value)}
             variant="outlined"
             margin="normal"
             required
@@ -73,6 +84,8 @@ export default function SignIn() {
             autoFocus
           />
           <TextField
+           value={password}
+           onChange={e=>setPassword(e.target.value)}
             variant="outlined"
             margin="normal"
             required
@@ -93,6 +106,7 @@ export default function SignIn() {
             variant="contained"
             color="primary"
             className={classes.submit}
+            // onClick={signinfire}
           >
             Iniciar sesión
           </Button>

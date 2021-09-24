@@ -11,6 +11,9 @@ import { Badge } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import { useStateValue } from '../StateProvider/StateProvider';
 import { totalItemsInBasket } from '../Reducer/reducer';
+import {useHistory} from "react-router-dom";
+// import { actionTypes } from "../Reducer/reducer"
+// import { Auth } from "firebase"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -35,7 +38,24 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Navbar() {
   const classes = useStyles();
-  const [{ basket }, dispatch] = useStateValue();
+  const [{ basket, user }, dispatch] = useStateValue();
+  const history = useHistory();
+
+
+  // const handleAuth = () => {
+  //   if(user){
+  //     Auth.signOut();
+  //     dispatch({
+  //       type: actionTypes.EMPTY_BASKET,
+  //       basket: [],
+  //     });
+  //     dispatch({
+  //       type: actionTypes.SET_USER,
+  //       user: null,
+  //     });
+  //     history.push("/")
+  //   }
+  // }
 
   return (
     <div className={classes.root}>
@@ -49,12 +69,13 @@ export default function Navbar() {
             </Link>
             <div className={classes.grow} />
             <Typography variant='h6' component='p'>
-              Hola invitado
+              Hola {user ? user.email : "Invitado"}
             </Typography>
             <div className={classes.button}>
               <Link to='/signin'>
-                <Button variant='contained' color='error'>
-                  <strong>Sign In</strong>
+                <Button variant='contained' color='error'> 
+                {/* onClick={handleAuth} */}
+                  <strong>{user ? "Cerrar sesión" : "Iniciar sesión"}</strong>
                 </Button>
               </Link>
               <Link to='/checkout-page'>

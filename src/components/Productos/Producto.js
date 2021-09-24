@@ -16,6 +16,8 @@ import accounting from 'accounting';
 import { useState } from 'react';
 import { actionTypes } from '../Reducer/reducer';
 import { useStateValue } from '../StateProvider/StateProvider';
+import styled from 'styled-components';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -44,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Producto({ data }) {
-  const { id, nombre, precio, stock, rating, imagenProducto, descripcion, tipoProducto } = data;
+  const { id, nombre, precio, rating, imagenProducto, descripcion, tipoProducto } = data;
 
   const classes = useStyles();
   const [{ basket }, dispatch] = useStateValue();
@@ -59,7 +61,7 @@ export default function Producto({ data }) {
   const addToBasket = () => {
     dispatch({
       type: actionTypes.ADD_TO_BASKET,
-      item: { id, nombre, precio, stock, rating, imagenProducto, descripcion, tipoProducto },
+      item: { id, nombre, precio, rating, imagenProducto, descripcion, tipoProducto },
     });
   };
 
@@ -72,7 +74,11 @@ export default function Producto({ data }) {
           </Typography>
         }
         title={nombre}
-        subheader={stock}
+        subheader={
+          <div>
+           
+          </div>
+        }
       />
       <CardMedia className={classes.media} image={imagenProducto} title={nombre} />
       <CardContent>
@@ -112,5 +118,6 @@ export default function Producto({ data }) {
         </CardContent>
       </Collapse>
     </Card>
+    
   );
 }
