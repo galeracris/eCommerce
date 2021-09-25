@@ -9,6 +9,7 @@ import SignUp from './components/Signup/SignUp';
 // import { Auth } from './components/Firebase/auth';
 // import { actionTypes } from './components/Reducer/reducer';
 import { useStateValue } from './components/StateProvider/StateProvider';
+import Checkout from "./components/CheckoutForm/Checkout";
 
 function App() {
 
@@ -39,6 +40,9 @@ function App() {
             </Route>
             <Route exact path="/checkout-page">
               <CheckoutPage/>
+            </Route>
+            <Route exact path="/checkout">
+              <Checkout/>
             </Route>
             <Route exact path="/">
               <ContainerProductos />
