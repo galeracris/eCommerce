@@ -75,9 +75,9 @@ export default function Producto({ data }) {
         }
         title={nombre}
         subheader={
-          <div>
+          <>
            
-          </div>
+          </>
         }
       />
       <CardMedia className={classes.media} image={imagenProducto} title={nombre} />
