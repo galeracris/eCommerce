@@ -3,13 +3,15 @@ import Review from './Review';
 import { Button, Divider, Typography } from '@material-ui/core';
 import { Elements, CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
-import { getBasketTotal } from '../Reducer/reducer';
+import { actionTypes, getBasketTotal } from '../Reducer/reducer';
 import { useStateValue } from '../StateProvider/StateProvider';
 import accounting from 'accounting';
-import axios from "axios";
+import axios from 'axios';
+import { getData } from '../Firebase/index'
+import { getDocs, Timestamp } from "firebase/firestore";
 
 
-const stripePromise = loadStripe("pk_test_51JeW0gDODZ3T0eM4VIePSfypOsLtZNstEneYjJt8xkcjSOkmfh43NpKOZ2ZJVuUTpkeKWf2dgL5QkqEmSRJvFXvO00DTFrx8O0")
+const stripePromise = loadStripe("pk_test_51JeW0gDODZ3T0eM4VIePSfypOsLtZNstEneYjJt8xkcjSOkmfh43NpKOZ2ZJVuUTpkeKWf2dgL5QkqEmSRJvFXvO00DTFrx8O0");
  
 const CARD_ELEMENTS_OPTIONS = {
   iconStyle: "solid",
@@ -35,7 +37,7 @@ const CARD_ELEMENTS_OPTIONS = {
 
 
 const CheckoutForm = ({backStep, nextStep}) => {
-const [{basket}, dispatch] = useStateValue();
+const [{basket}, paymentMethod, dispatch] = useStateValue();
 const stripe = useStripe();
 const elements = useElements();
 
@@ -44,19 +46,39 @@ const handleSubmit = async(e) => {
   const {error, paymentMethod} = await stripe.createPaymentMethod({
     type: "card",
     card: elements.getElement(CardElement)
-  })
+  });
   if (!error){
-    const {id} = paymentMethod;
-    try{
-      const { data } = await axios.post("http://localhost:3001/api/checkout",{
-        id,
-        amount: getBasketTotal(basket) * 100,
-      })
-        console.log(data);
+    const { id } = paymentMethod;
+    console.log(id)
+    nextStep();
+  } else {
+  console.log(error);
+    nextStep();
+    }
   }
-    catch(error){console.log(error)}
-  }
-}
+
+ /////////// Firebase data - order
+
+// const handleSubmit = async(e) => {
+//   e.preventDefault();
+
+//   useEffect(() => {
+    
+//     const [order, setOrder] = useState([]);
+  
+//     const orderCollection = collection(getData(), 'order' );
+  
+//     const orderSnapshot = await getDocs(orderCollection);
+  
+//     const orderNew = orderSnapshot.docs.add(order);
+    
+//     return () => {
+     
+//       console.log(orderNew)
+//       serOrder(orderNew);
+//       nextStep();
+//     }
+// }, [])
 
 
   return(
@@ -67,11 +89,8 @@ const handleSubmit = async(e) => {
       <Button disabled={false} type="submit" variant="contained" color="primary">{`Pagar ${accounting.formatMoney(getBasketTotal(basket), "$")}`}</Button>
       </div>
     </form>
-  )
+)
 }
-
-
-
 
 
 const PaymentForm = ({backStep, nextStep}) => {
