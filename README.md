@@ -1,7 +1,7 @@
 Cerveceria1930
 
 Descripción
-Proyecto Final para el curso de ReactJS de la academia Coder House (2021). La aplicación permite conectarse con un backend realizdo con Firebase. Permite seleccionar ciertos productos, navegar a sus detalles, agregarlos al carrito, poder acceder a él, simular la compra de los productos. Al clickear sobre el botón "finalizar compra", pide llenar un formulario con datos básicos y luego de confirmar se genera un id de orden para el usuario y en firebase se guarda la orden con los productos que compró.
+Proyecto Final para el curso de ReactJS de la academia Coder House (2021). La aplicación permite conectarse con un backend realizado con Firebase. Permite seleccionar ciertos productos, navegar a sus detalles, agregarlos al carrito, poder acceder a él, simular la compra de los productos. Al clickear sobre el botón "finalizar compra", pide llenar un formulario con datos básicos y luego de confirmar se genera un id de orden para el usuario y en firebase se guarda la orden con los productos que compró.
 
 Tecnologías y librerías:
 
@@ -28,4 +28,4 @@ Se abre una pestaña del navegador en el puerto 3000:
 Sino copiar esta URL y pegarla en el navegador: http://localhost:3000
 
 Backend
-**ATENCIÓN** Tiene un backend realizado con Firebase, por si quieren descargar y correr este proyecto, tienen que generar su backend en firebase sino local con data fake. En el archivo .env.example estan las variables que deben ir para poder llenarlas con sus datos de Firebase.
+**ATENCIÓN** Tiene un backend realizado con Firebase, por si quieren descargar y correr este proyecto, tienen que generar su backend en firebase sino local con data fake. En el archivo .env.example están las variables que deben ir para poder llenarlas con sus datos de Firebase.
