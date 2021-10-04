@@ -72,12 +72,6 @@ export default function Navbar() {
               Hola {user ? user.email : "Invitado"}
             </Typography>
             <div className={classes.button}>
-              <Link to='/signin'>
-                <Button variant='contained' color='error'> 
-                {/* onClick={handleAuth} */}
-                  <strong>{user ? "Cerrar sesión" : "Iniciar sesión"}</strong>
-                </Button>
-              </Link>
               <Link to='/checkout-page'>
                 <IconButton aria-label='show cart items' color='inherit'>
                   <Badge badgeContent={totalItemsInBasket(basket)} color='secondary'>
@@ -92,3 +86,4 @@ export default function Navbar() {
     </div>
   );
 }
+// 

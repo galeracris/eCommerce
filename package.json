@@ -17,6 +17,7 @@
     "accounting": "^0.4.1",
     "add": "^2.0.6",
     "axios": "^0.21.4",
+    "bootstrap": "^5.1.1",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "firebase": "^9.1.0",
@@ -25,6 +26,7 @@
     "react-hook-form": "^7.16.1",
     "react-router-dom": "^5.2.1",
     "react-scripts": "4.0.3",
+    "reactstrap": "^8.10.0",
     "stripe": "^8.176.0",
     "styled-components": "^5.3.1",
     "web-vitals": "^1.0.1"

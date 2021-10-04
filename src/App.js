@@ -3,8 +3,8 @@ import Navbar from './components/Navbar/Navbar';
 import ContainerProductos from '../src/components/ContainerProductos/ContainerProductos';
 import CheckoutPage from '../src/components/Checkout/CheckoutPage';
 import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
-import SignIn from './components/SIgnIn/SignIn';
-import SignUp from './components/Signup/SignUp';
+// import SignIn from './components/SIgnIn/SignIn';
+// import SignUp from './components/Signup/SignUp';
 // import { useEffect } from 'react';
 // import { Auth } from './components/Firebase/auth';
 // import { actionTypes } from './components/Reducer/reducer';
@@ -32,12 +32,12 @@ function App() {
       <div className="App">
         <Navbar/>
           <Switch>
-            <Route exact path="/signin">
+            {/* <Route exact path="/signin">
               <SignIn />
             </Route>
             <Route exact path="/signup">
               <SignUp />
-            </Route>
+            </Route> */}
             <Route exact path="/checkout-page">
               <CheckoutPage/>
             </Route>
