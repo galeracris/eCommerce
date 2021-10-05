@@ -9,7 +9,6 @@ import { useStateValue } from "../StateProvider/StateProvider";
 const Checkout = () => {
   const classes = useStyles();
   const [activeStep, setActiveStep] = useState(0);
-  const [{paymentMessage}, dispatch] = useStateValue();
   const steps = ['Dato del comprador', 'Detalles del pago'];
 
 

@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     color: 'white',
     padding: '25px',
     width: '65%',
-    height: '20vh',
+    height: '30vh',
   },
   button: {
     marginTop: '1.5rem',

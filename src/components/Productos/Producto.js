@@ -121,23 +121,22 @@ const Contenido = styled.div`
               <ModalBody>
                         <CardContent>
                             <Typography variant='h5' color='textSecondary'>
-                                {accounting.formatMoney(precio)}
+                            Imagen = {imagenProducto} 
                             </Typography>
                         </CardContent>
-
-                        <CardMedia image={imagenProducto}/>
                     </ModalBody>
 
                     <ModalFooter>
                             <CardActions disableSpacing >
                                 <IconButton aria-label='Agregar al carrito' onClick={() => addToBasket()}>
-                                    <AddShoppingCart fontSize='large' />
+                                   Agregar <AddShoppingCart fontSize='large' />
                                 </IconButton>
 
                                 <IconButton aria-label='Eliminar del carrito' onClick={() => removeItem()}>
-                                    <RemoveShoppingCartOutlinedIcon fontSize='large' />
+                                   Eliminar <RemoveShoppingCartOutlinedIcon fontSize='large' />
                                 </IconButton>
                             </CardActions>
+                                Id Producto = {id} 
                     </ModalFooter>
                     </Contenido>
             </ItemDetalle>

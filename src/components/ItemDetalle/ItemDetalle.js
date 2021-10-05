@@ -11,10 +11,10 @@ function ItemDetalle({children, estado, cambiarEstado}) {
     width:100vw;
     height: 100vh;
     position: fixed;
-    top: 0;
+    bottom: 25px;
     left:0;
-    background: rgba(0,0,0,.5);
-    padding: 40px;
+    background: rgba(0,0,0,.6);
+    padding: 20px;
     display: flex;
     align-items: center;
     justify-content: center;

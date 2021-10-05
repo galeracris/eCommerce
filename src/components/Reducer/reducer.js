@@ -66,18 +66,6 @@ const reducer = (state = initialState, action) => {
           ...state,
             paymentMessage: action.paymentMessage,
         };  
-        
-      // case "SET_USER":
-      //  return {
-      //     ...state,
-      //     user: action.user
-      //   };
-
-      //   case "EMPTY_BASKET":
-      //     return{
-      //       ...state,
-      //       basket: action.basket
-      //     };
 
     default:
       return state;
