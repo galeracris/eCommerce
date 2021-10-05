@@ -3,7 +3,7 @@ import { collection, getDocs } from 'firebase/firestore';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Producto from '../Productos/Producto';
-import { getData } from 'services/firestore';
+import { db } from 'services/firestore';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,7 +21,7 @@ const ContainerProductos = () => {
     // 2 PIDO LOS DATOS (async/await)
     const getLatas = async () => {
       // 3 obtener colleccion
-      const latasCollection = collection(getData(), 'latas');
+      const latasCollection = collection(db, 'latas');
 
       // 4 obtener Snapshot de la lista
       const latasSnapshot = await getDocs(latasCollection);

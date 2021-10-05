@@ -6,8 +6,9 @@ import AddressInput from './AddressInput';
 import { actionTypes } from 'components/Reducer/reducer';
 import { useStateValue } from 'components/StateProvider/StateProvider';
 
-const AddressForm = ({ nextStep }) => {
+const AddressForm = () => {
   const { handleSubmit, control } = useForm();
+
   const [, dispatch] = useStateValue();
 
   const formSubmit = (data) => {

@@ -1,6 +1,5 @@
 import { Paper, Step, StepLabel, Stepper, Typography } from '@material-ui/core';
 import useStyles from './styles';
-import { useState } from 'react';
 import AddressForm from './AddressForm';
 import PaymentForm from './PaymentForm';
 import Confirmation from '../Confirmation';
@@ -9,7 +8,6 @@ import { useStateValue } from 'components/StateProvider/StateProvider';
 const Checkout = () => {
   const classes = useStyles();
   const [{ step }] = useStateValue();
-  console.log('🚀 ~ Checkout ~ step', step);
 
   const steps = ['Dato del comprador', 'Detalles del pago'];
 

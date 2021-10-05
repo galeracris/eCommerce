@@ -58,7 +58,6 @@ const reducer = (state = initialState, action) => {
       return { ...state, basket: [] };
 
     case actionTypes.SET_SHIPPINGDATA:
-      console.log('🚀 ~ reducer ~ action.shippingData', action.shippingData);
       return {
         ...state,
         shippingData: action.shippingData,
@@ -71,7 +70,6 @@ const reducer = (state = initialState, action) => {
       };
 
     case actionTypes.SET_STEP:
-      console.log('🚀 ~ reducer ~ action.payload', action.payload);
       return {
         ...state,
         step: action.payload,

@@ -6,6 +6,7 @@ import { useStateValue } from '../StateProvider/StateProvider';
 import accounting from 'accounting';
 import { Button } from 'reactstrap';
 import { Timestamp } from '@firebase/firestore';
+import { addOrder } from 'services/firestore';
 
 const CARD_ELEMENTS_OPTIONS = {
   iconStyle: 'solid',
@@ -27,50 +28,10 @@ const CARD_ELEMENTS_OPTIONS = {
   },
 };
 
-const CheckoutForm = () => {
-  const [{ basket }, dispatch] = useStateValue();
-
-  /*
-const docRef = await addDoc(collection(db, 'orden'), {
-  nombre: { firstName },
-  telefono: { telefono },
-  email: { email },
-  date: firebase.firestore.Timestamp.fromDate(new Date()),
-  total: (getBasketTotal(basket), '$'),
-});
-
-console.log(docRef.id);
-
-orden
-  .add(newOrden)
-  .then(({ id }) => {
-    setOrderId(id);
-  })
-  .catch((err) => {
-    setError(err);
-  })
-  .finally(() => {
-    setLoading(false);
-  });
-
-  */
-  return (
-    <form>
-      <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '1rem' }}>
-        <Button variant='outlined'>ATRÁS</Button>
-        <Button disabled={false} type='submit' variant='contained' color='primary'>{`Pagar ${accounting.formatMoney(
-          getBasketTotal(basket),
-          '$'
-        )}`}</Button>
-      </div>
-    </form>
-  );
-};
-
 const PaymentForm = () => {
   const [{ shippingData, basket }, dispatch] = useStateValue();
 
-  const handleCheckout = () => {
+  const handleCheckout = async () => {
     const { firstName, email, phone } = shippingData;
 
     const orderData = {
@@ -80,7 +41,8 @@ const PaymentForm = () => {
       date: Timestamp.now(),
       total: getBasketTotal(basket, '$'),
     };
-    console.log('🚀 ~ handleCheckout ~ orderData', orderData);
+
+    addOrder(orderData);
   };
 
   const handleBack = () => dispatch({ type: actionTypes.SET_STEP, payload: 0 });
