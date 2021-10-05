@@ -2,7 +2,8 @@ export const initialState = {
   basket: [],
   user: null,
   shippingData: {},
-  paymentMessage: ","
+  paymentMessage: ',',
+  step: 0,
 };
 
 export const actionTypes = {
@@ -10,10 +11,11 @@ export const actionTypes = {
   REMOVE_ITEM: 'REMOVE_ITEM',
   REMOVE_ALL_ITEM: 'REMOVE_ALL_ITEM',
   CLEAR_BASKET: 'CLEAR_BASKET',
-  SET_USER: "SET_USER",
-  EMPTY_BASKET: "EMPTY_BASKET",
-  SET_SHIPPINGDATA: "SET_SHIPPINGDATA",
-  SET_PAYMENTMESSAGE: "SET_PAYMENTMESSAGE"
+  SET_USER: 'SET_USER',
+  EMPTY_BASKET: 'EMPTY_BASKET',
+  SET_SHIPPINGDATA: 'SET_SHIPPINGDATA',
+  SET_PAYMENTMESSAGE: 'SET_PAYMENTMESSAGE',
+  SET_STEP: 'SET_STEP',
 };
 
 export const totalItemsInBasket = (basket) => basket.reduce((amount, item) => amount + item.cantidad, 0);
@@ -55,17 +57,25 @@ const reducer = (state = initialState, action) => {
     case actionTypes.CLEAR_BASKET:
       return { ...state, basket: [] };
 
-      case actionTypes.SET_SHIPPINGDATA:
-        return {
-          ...state,
-           shippingData: action.shippingData,
-        };
+    case actionTypes.SET_SHIPPINGDATA:
+      console.log('🚀 ~ reducer ~ action.shippingData', action.shippingData);
+      return {
+        ...state,
+        shippingData: action.shippingData,
+      };
 
-        case actionTypes.SET_PAYMENTMESSAGE:
-        return{
-          ...state,
-            paymentMessage: action.paymentMessage,
-        };  
+    case actionTypes.SET_PAYMENTMESSAGE:
+      return {
+        ...state,
+        paymentMessage: action.paymentMessage,
+      };
+
+    case actionTypes.SET_STEP:
+      console.log('🚀 ~ reducer ~ action.payload', action.payload);
+      return {
+        ...state,
+        step: action.payload,
+      };
 
     default:
       return state;

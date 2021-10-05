@@ -3,7 +3,7 @@ import { collection, getDocs } from 'firebase/firestore';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Producto from '../Productos/Producto';
-import { getData } from '../../services/firebase';
+import { getData } from 'services/firestore';
 
 const useStyles = makeStyles((theme) => ({
   root: {
