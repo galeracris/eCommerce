@@ -18,10 +18,9 @@ import { actionTypes } from '../Reducer/reducer';
 import { useStateValue } from '../StateProvider/StateProvider';
 import styled from 'styled-components';
 import ItemDetalle from '../ItemDetalle/ItemDetalle';
-import {Button} from 'reactstrap';
+import { Button } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
-import {ModalBody, ModalFooter} from 'reactstrap';
-
+import { ModalBody, ModalFooter } from 'reactstrap';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -50,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Producto({ data }) {
-  const { id, nombre, precio, rating, imagenProducto, descripcion, tipoProducto } = data;
+  const { id, nombre, precio, rating, imagen, descripcion, tipoProducto } = data;
 
   const classes = useStyles();
   const [{ basket }, dispatch] = useStateValue();
@@ -66,7 +65,7 @@ export default function Producto({ data }) {
   const addToBasket = () => {
     dispatch({
       type: actionTypes.ADD_TO_BASKET,
-      item: { id, nombre, precio, rating, imagenProducto, descripcion, tipoProducto },
+      item: { id, nombre, precio, rating, imagen, descripcion, tipoProducto },
     });
   };
 
@@ -76,17 +75,14 @@ export default function Producto({ data }) {
     justify-content: space-between;
     margin-bottom: 20px;
     padding-bottom: 20px;
-    border-bottom: 1px solid #E8E8E8;
-    `;
+    border-bottom: 1px solid #e8e8e8;
+  `;
 
-const Contenido = styled.div`
+  const Contenido = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-`;
-
-
-
+  `;
 
   return (
     <Card className={classes.root}>
@@ -98,52 +94,49 @@ const Contenido = styled.div`
         }
         title={nombre}
         subheader={
-
           <>
-          <Button onClick={() => setEstadoModal(!estadoModal)}color="success">
-            Ver detalle
-          </Button>
+            <Button onClick={() => setEstadoModal(!estadoModal)} color='success'>
+              Ver detalle
+            </Button>
 
-            <ItemDetalle
-            estado={estadoModal}
-            cambiarEstado={setEstadoModal} 
-            >
+            <ItemDetalle estado={estadoModal} cambiarEstado={setEstadoModal}>
               <Contenido>
-            <ModalHeader>
-                    <CardHeader
-                        action={<Typography variant='h5' color='textSecondary'>
-                            {nombre} | {accounting.formatMoney(precio)}                               
-                            </Typography>
-                            }
-                    />
+                <ModalHeader>
+                  <CardHeader
+                    action={
+                      <Typography variant='h5' color='textSecondary'>
+                        {nombre} | {accounting.formatMoney(precio)}
+                      </Typography>
+                    }
+                  />
                 </ModalHeader>
 
-              <ModalBody>
-                        <CardContent>
-                            <Typography variant='h5' color='textSecondary'>
-                            Imagen = {imagenProducto} 
-                            </Typography>
-                        </CardContent>
-                    </ModalBody>
+                <ModalBody>
+                  <CardContent>
+                    <Typography variant='h5' color='textSecondary'>
+                      Imagen = {imagen}
+                    </Typography>
+                  </CardContent>
+                </ModalBody>
 
-                    <ModalFooter>
-                            <CardActions disableSpacing >
-                                <IconButton aria-label='Agregar al carrito' onClick={() => addToBasket()}>
-                                   Agregar <AddShoppingCart fontSize='large' />
-                                </IconButton>
+                <ModalFooter>
+                  <CardActions disableSpacing>
+                    <IconButton aria-label='Agregar al carrito' onClick={() => addToBasket()}>
+                      Agregar <AddShoppingCart fontSize='large' />
+                    </IconButton>
 
-                                <IconButton aria-label='Eliminar del carrito' onClick={() => removeItem()}>
-                                   Eliminar <RemoveShoppingCartOutlinedIcon fontSize='large' />
-                                </IconButton>
-                            </CardActions>
-                                Id Producto = {id} 
-                    </ModalFooter>
-                    </Contenido>
+                    <IconButton aria-label='Eliminar del carrito' onClick={() => removeItem()}>
+                      Eliminar <RemoveShoppingCartOutlinedIcon fontSize='large' />
+                    </IconButton>
+                  </CardActions>
+                  Id Producto = {id}
+                </ModalFooter>
+              </Contenido>
             </ItemDetalle>
           </>
         }
       />
-      <CardMedia className={classes.media} image={imagenProducto} title={nombre} />
+      <CardMedia className={classes.media} image={imagen} title={nombre} />
       <CardContent>
         <Typography variant='body2' color='textSecondary' component='p'>
           {tipoProducto}
