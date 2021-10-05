@@ -7,6 +7,7 @@ export const db = getFirestore(app);
 // Methods
 
 export const addOrder = async (order) => {
-  const docRef = await addDoc(collection(db, 'ordenes'), order);
-  console.log('Order added', docRef.id);
+  const ref = await addDoc(collection(db, 'ordenes'), order);
+
+  return ref;
 };

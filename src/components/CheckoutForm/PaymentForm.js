@@ -42,7 +42,10 @@ const PaymentForm = () => {
       total: getBasketTotal(basket, '$'),
     };
 
-    addOrder(orderData);
+    const order = await addOrder(orderData);
+
+    dispatch({ type: actionTypes.SET_STEP, payload: 2 });
+    dispatch({ type: actionTypes.SET_PAYMENTMESSAGE, paymentMessage: 'OK', confirmationId: order.id });
   };
 
   const handleBack = () => dispatch({ type: actionTypes.SET_STEP, payload: 0 });

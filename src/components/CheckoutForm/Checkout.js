@@ -1,17 +1,19 @@
 import { Paper, Step, StepLabel, Stepper, Typography } from '@material-ui/core';
 import useStyles from './styles';
-import AddressForm from './AddressForm';
-import PaymentForm from './PaymentForm';
-import Confirmation from '../Confirmation';
+
 import { useStateValue } from 'components/StateProvider/StateProvider';
+
+import Confirmation from 'components/Confirmation';
+import PaymentForm from './PaymentForm';
+import AddressForm from './AddressForm';
 
 const Checkout = () => {
   const classes = useStyles();
   const [{ step }] = useStateValue();
 
-  const steps = ['Dato del comprador', 'Detalles del pago'];
+  const steps = ['Dato del comprador', 'Detalles del pago', 'Confirmación'];
 
-  const Forms = [<AddressForm />, <PaymentForm />];
+  const Forms = [<AddressForm />, <PaymentForm />, <Confirmation />];
 
   return (
     <main className={classes.layout}>
@@ -26,7 +28,7 @@ const Checkout = () => {
             </Step>
           ))}
         </Stepper>
-        {step === steps.length ? <Confirmation /> : Forms[step]}
+        {Forms[step]}
       </Paper>
     </main>
   );

@@ -4,6 +4,7 @@ export const initialState = {
   shippingData: {},
   paymentMessage: ',',
   step: 0,
+  confirmationId: null,
 };
 
 export const actionTypes = {
@@ -67,6 +68,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         paymentMessage: action.paymentMessage,
+        confirmationId: action.confirmationId,
       };
 
     case actionTypes.SET_STEP:
