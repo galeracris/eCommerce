@@ -11,7 +11,7 @@ function ItemDetalle({children, estado, cambiarEstado}) {
     width:100vw;
     height: 100vh;
     position: fixed;
-    bottom: 25px;
+    bottom: 60px;
     left:0;
     background: rgba(0,0,0,.6);
     padding: 20px;
@@ -21,13 +21,13 @@ function ItemDetalle({children, estado, cambiarEstado}) {
     `;
 
 const Modal = styled.div`
-    width: 500px;
+    width: 400px;
     min-height: 100px;
     background: #fff;
     position: relative;
     border-radius: 5px;
     box-shadow: rgba(100,100,111, 0.2) 0px 7px, 29px, 0px;
-    padding: 20px;
+    padding: 5px;
     `;
 
 const BotonCerrar = styled.button`

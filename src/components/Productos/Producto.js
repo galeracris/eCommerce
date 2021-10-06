@@ -34,7 +34,8 @@ const useStyles = makeStyles((theme) => ({
   },
   media: {
     height: 0,
-    paddingTop: '56.25%',
+    paddingTop: '60.25%',
+    backgroundSize: '35%',
   },
   expand: {
     transform: 'rotate(0deg)',
@@ -105,18 +106,14 @@ export default function Producto({ data }) {
                   <CardHeader
                     action={
                       <Typography variant='h5' color='textSecondary'>
-                        {nombre} | {accounting.formatMoney(precio)}
+                        {nombre} | {accounting.formatMoney(precio)} 
                       </Typography>
                     }
                   />
                 </ModalHeader>
-
+               
                 <ModalBody>
-                  <CardContent>
-                    <Typography variant='h5' color='textSecondary'>
-                      Imagen = {imagen}
-                    </Typography>
-                  </CardContent>
+                  image={imagen} 
                 </ModalBody>
 
                 <ModalFooter>

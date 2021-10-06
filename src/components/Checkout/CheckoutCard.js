@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
     media: {
         height: 0,
         paddingTop: '56.25%',
+        backgroundSize: '35%',
     },
     cardActions: {
         display: 'flex',
@@ -34,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function CheckoutCard({ Producto }) {
-    const { id, cantidad, nombre, precio, stock, rating, imagenProducto } = Producto;
+    const { id, cantidad, nombre, precio, stock, rating, imagen } = Producto;
 
     const classes = useStyles();
     const [{ basket }, dispatch] = useStateValue();
@@ -64,7 +65,7 @@ function CheckoutCard({ Producto }) {
                 </Typography>
             </CardContent>
 
-            <CardMedia className={classes.media} image={imagenProducto} title={nombre} />
+            <CardMedia className={classes.media} image={imagen} title={nombre} />
 
             <CardActions disableSpacing className={classes.cardActions}>
                 <div className={classes.cardRating}>
